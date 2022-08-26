@@ -1,0 +1,219 @@
+
+table, th, td {
+  border-radius: 0px;
+  text-align:center;
+}
+table{
+  position: absolute;
+  border: 1px solid black;
+  background-color:black;
+}
+td, th{
+  width:8%;
+
+  border: 1px solid black;
+}
+
+th{
+  background-color:#355764;
+}
+.div1{
+  margin-left:50%;
+  border-left: 1px solid black;
+  border-bottom:1px solid black;
+  background-color:#FCF8E8;
+}
+.div2{
+
+}
+body{
+  margin:auto;
+  animation-name: fondo;
+  animation-duration: 1000s;
+  animation-iteration-count: infinite;
+  background-color:#DCD7C9;
+  overflow: hidden;
+}
+.divInv1{
+  margin-left:50%;
+  border-left: 1px solid black;
+  border-bottom:1px solid black;
+  background-color:#FCF8E8;
+  color:#FCF8E8;
+}
+tr:nth-child(even) .divInv2{
+  color:#9CB4CC;
+}
+tr:nth-child(odd) .divInv2{
+  color:#DCD7C9;
+}
+
+.div3{
+  margin-right:50%;
+  border-right: 1px solid black;
+  border-bottom:1px solid black;
+  background-color:#FCF8E8;
+}
+
+tr:nth-child(even) {background-color: #9CB4CC;}
+tr:nth-child(odd) {background-color: #DCD7C9;}
+
+
+
+.img1{
+    float:left;
+    width: 33.33%;
+    padding-top:0px;
+    padding-left:2%;
+}
+.img2{
+    float:right;
+    width: 33.33%;
+    padding-top:0px;
+    padding-right:2%;
+}
+/*----------------------Interfaz Principal---------------------------*/
+.titulo{
+    margin:auto;
+    width:80%;
+    margin-bottom:10%;
+    margin-left:45%;
+    margin-top:4%;
+    height:40px;
+}
+
+.imgIcono{
+    animation-name: giroFlow;
+    width: 10%;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    margin-bottom:1px;
+    margin-left:25%;
+    display:inline;
+}
+@keyframes giroFlow{
+    0%  {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+@keyframes fondo{
+    0% {background-color:#DCD7C9}
+    50% {background-color:#D9F8C4}
+    75% {background-color:#B2C8DF}
+    100% {background-color:#FFF9CA}
+}
+
+h1{
+ font-family: 'Roboto', sans-serif;
+ padding:0%;
+ display:inline;
+ height:10px;
+ letter-spacing: 5px;
+ font-size:60px;
+ color:#1F4690;
+ font_weight:900;
+}
+/*--------------------Vista Boliches-------------------------*/
+
+.bolo{
+  display: inline-block;
+  width:25%;
+  height:25%;
+  margin:auto;
+  border:0px;
+}
+
+.bolo1{
+  margin-left:37.5%;
+}
+.bolo2{
+  margin-left:25%;
+}
+.bolo3{
+  margin-left:12.5%;
+}
+
+.contenedor{
+  font-size: 0;
+  letter-spacing: 0px;
+  width:40vw;
+  height:40vh;;
+  justify-content:center;
+  margin: auto;
+  line-height:0px;
+}
+.filabol0{
+  margin-top:7vh;
+}
+.filabol1{
+}
+.filabol2{
+
+}
+.filabol3{
+
+}
+/* Administrador */
+body{
+  margin:0px;
+}
+#mainAdmin {
+  border:  border-left: 1px solid #100F0F;
+  width: 100%;
+  height: 100vh;
+  border: 1px solid #c3c3c3;
+  display: flex;
+  justify-content: space-around;
+  background-color:#100F0F;
+  color:#E2DCC8;
+}
+.tituloPista{
+  background-color:#0F3D3E;
+  padding-top:8vh;
+  padding-bottom:12vh;
+  height: 25px;
+  width:100%;
+  display:block;
+}
+ .divAdmin {
+  display:block;
+  width: 20%;
+  height: 100vh;
+  text-align:center;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  background-color:#F1F1F1;
+}
+
+ .fila{
+  padding-top:8vh;
+  padding-bottom:12vh;
+  height: 25px;
+  width:100%;
+  display:block;
+}
+
+#mainAdmin .subfila:hover{
+  animation-name: colorHover;
+  animation-duration: 1s;
+  background-color:blue;
+}
+
+#mainAdmin .subfila{
+  color:#100F0F;
+}
+
+
+.estadoVerde{
+  background-color:green;
+}
+
+.estadoRojo{
+  background-color:red;
+}
+
+
+@keyframes colorHover{
+  0% {background-color:#F1F1F1}
+  100% {background-color:blue}
+}

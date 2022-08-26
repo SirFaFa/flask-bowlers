@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+    var suma = 0;
+</script>
+<div class="contenedor">
+    {% for i in range(0,4) %}
+        <div class="filabol{{i|string}}">
+        {% for j in range(0,(4-i)) %}
+            {% if j == 0 and i!=0 %}
+            <script>suma += 1;</script>
+            <img class="bolo bolo{{(4-i)|string}}" src="/static/img/birla.png"/>
+            {% else %}
+            <script>suma += 1;</script>
+            <img class="bolo" src="/static/img/birla.png"/>
+            {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<div>
+    <img class="img1" src="/static/img/jajas-.png" alt=""/>
+    <img class="img2" src="/static/img/jajas2-.png" alt=""/>
+</div>
+<script>
+    console.log({{data}});
+    console.log(suma);
+    setTimeout(function(){
+        window.location.href = "{{redirect_url}}";
+    }, 5000);
+</script>
+{% endblock %}

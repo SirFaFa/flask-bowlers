@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div id="mainAdmin" class="divAdmin">
+
+
+  {% for i in range(0,4) %}
+  <div class="divAdmin">
+  <div class="fila tituloPista">Pista {{i+1}}</div>
+  <div class="fila estadoVerde divAdmin">Estado Pista</div>
+  <div class="fila subfila" onclick="redirecciona('add/{{i}}')">Añadir Partida 🔑</div>
+  <div class="fila subfila" onclick="redirecciona('delete/{{i}}')">Borrar Partida 🔧</div>
+  <div class="fila subfila" onclick="redirecciona('pista/{{i}}')">Ver Partida 👁️</div>
+  </div>
+  {% endfor %}
+
+</div>
+
+
+<script>
+function redirecciona(url=' ') {
+  window.location.href = "{{url_for('home')}}"+url;
+  console.log("{{url_for('home')}}"+url);
+}
+</script>
+
+{% endblock %}

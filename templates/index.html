@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+{% if data %}
+<div class="titulo">
+    <h1>Pista {{data.id+1}}</h1>
+    <img class="imgIcono" src="/static/img/bowl.png"/>
+</div>
+<table style="width:100%">
+
+    <tr>
+      <th> </th>
+      {% for valor in range(0,10) %}
+        <th>
+            {{valor+1}}
+        </th>
+      {% endfor %}
+      <th>Total</th>
+    </tr>
+
+    {% for i in range(0,data.jugadores|length) %}
+    <tr>
+      <td>{{data.jugadores[i]}}</td>
+      {% for j in range(0,10) %}
+        <td>
+            {% if data.puntuacion[i][j][0]!='.' %}
+            <div class="div1">
+                {{data.puntuacion[i][j][0]}}
+                {% if data.puntuacion[i][j][1]!='.' %}
+                {% if data.puntuacion[i][j][1]!='/' and data.puntuacion[i][j][0]!='X' and data.puntuacion[i][j][1]!=' ' %}
+                <div style="display:inline;">
+                    {{data.puntuacion[i][j][1]-data.puntuacion[i][j][0]}}
+                </div>
+                {% else %}
+                <div style="display:inline;">
+                    {{data.puntuacion[i][j][1]}}
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="divInv1">
+                {{data.puntuacion[i][j][0]}}
+            </div>
+            {% endif %}
+
+
+            {%if data.puntuacion[i][j][1]=='.' %}
+            <div class="divInv2">
+                .
+            </div>
+            {% else %}
+            <div class="div2">
+                {{data.calculaArraySuma(j,i)}}
+            </div>
+            {% endif %}
+        </td>
+      {% endfor %}
+        <td>
+            {% if data.extra[i][0]!='.' %}
+            <div class="div3">
+                {{data.extra[i][0]}}
+                {% if data.extra[i][1]!='.' %}
+                <div style="display:inline;">
+                    {{data.extra[i][1]}}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% if data.puntuacion[i][9][1]!='.' %}
+            <div class="div2">
+                   {{data.calculaArraySuma(9,i)}}
+            </div>
+            {% else %}
+            <div class="divInv2">
+                  .
+            </div>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+    const socket = io();
+    socket.on('nueva-tirada', (dataBirla, pista) => {
+        if (pista == {{data.id}}) {
+            if (!{{data.finalizada}}) {
+            window.location.href =`{{url_for('home')}}transicion/{{data.id}}/[${dataBirla}]`;
+            }
+        }
+    });
+    if ({{data.finalizada}}){
+        socket.emit('partida-finalizada',
+        {
+            pista: {{data.id}},
+            jugadores: {{data.jugadores|tojson}},
+            puntuacion:{{data.puntuacion|tojson}}
+        });
+    }
+</script>
+
+{% else %}
+
+    <div>No se ha creado partida</div>
+
+{% endif %}
+{% endblock %}
