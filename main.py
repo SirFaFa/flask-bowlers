@@ -129,8 +129,8 @@ def handle_json(data):
     arrayPista[data['pista']] = ''
 
 
-
 @app.route('/register', methods=["GET", "POST"])
+@admin_only
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
@@ -201,15 +201,6 @@ def addPartida(id):
         return redirect(url_for('admin'))
     return render_template('crear-partida.html', form=form, current_user=current_user)
 
-@app.route("/pistas")
-@admin_only
-def pistass():
-    with open('cafe-data.csv', newline='') as csv_file:
-        csv_data = csv.reader(csv_file, delimiter='')
-        lista_de_pistas = []
-        for pista in csv_data:
-            lista_de_pistas.append(pista)
-    return render_template('pistas.html', pistas=lista_de_pistas)
 
 @app.route("/delete/<int:id>")
 @login_required
